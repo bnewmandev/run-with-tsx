@@ -2,6 +2,7 @@
   "name": "run-with-tsx",
   "displayName": "Run with tsx",
   "description": "Adds a context menu option to run TypeScript files using tsx.",
+  "repository": "https://github.com/bnewmandev/run-with-tsx",
   "license": "MIT",
   "publisher": "bensndev",
   "version": "1.0.0",
