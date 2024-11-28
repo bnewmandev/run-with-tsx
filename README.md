@@ -1,71 +1,77 @@
-# run-with-tsx README
+# Run with tsx
 
-This is the README for your extension "run-with-tsx". After writing up a brief description, we recommend including the following sections.
+**Run with tsx** is a Visual Studio Code extension that simplifies running TypeScript files using [tsx](https://github.com/esbuild-kit/tsx). With just a right-click, you can execute your `.ts` files in an integrated terminal.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- Adds a **Run with tsx** option to the context menu for `.ts` files.
+- Automatically opens and reuses an integrated terminal for running files.
+- Makes it easier to work with TypeScript files without needing to manually run commands.
 
-For example if there is an image subfolder under your extension project workspace:
+## Installation
 
-\!\[feature X\]\(images/feature-x.png\)
+### From VS Code Marketplace
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+1. Open the Extensions view in Visual Studio Code (`Ctrl+Shift+X` or `Cmd+Shift+X` on macOS).
+2. Search for **Run TSX Extension**.
+3. Click **Install**.
+
+### From `.vsix` File
+
+1. Download the `.vsix` file from the [Releases](#).
+2. In Visual Studio Code, click the `...` menu in the Extensions view and select **Install from VSIX...**.
+3. Choose the downloaded `.vsix` file.
+
+## Usage
+
+1. Open a TypeScript file (`.ts`) in Visual Studio Code.
+2. Right-click on the file in the Explorer or Editor and select **Run with tsx**.
+3. The command will:
+   - Open an integrated terminal (or reuse an existing one named `Run tsx`).
+   - Execute `npx tsx <file-path>`.
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+- **Node.js** (>= 14.x): Ensure you have Node.js installed.
+- **tsx**: If `tsx` is not installed globally, the extension will use `npx tsx`.
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+- Currently, the extension only supports `.ts` files. Adding support for other file types (e.g., `.tsx`) may be considered in future updates.
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
-
 ### 1.0.0
 
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+- Initial release.
+- Adds **Run with tsx** context menu option.
+- Executes TypeScript files in the integrated terminal.
 
 ---
 
-## Following extension guidelines
+## Contributing
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+Contributions, issues, and feature requests are welcome! Feel free to check out the [issues](https://github.com/your-repo/run-tsx-extension/issues) or submit a pull request.
 
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+1. Fork the repository.
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`).
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`).
+4. Push to the branch (`git push origin feature/AmazingFeature`).
+5. Open a pull request.
 
-## Working with Markdown
+## License
 
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
+---
 
-## For more information
+### Example Directory Structure
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+```plaintext
+├── src
+│   ├── extension.ts   # Main extension code
+│   └── test           # Test files
+├── package.json       # Extension manifest
+├── README.md          # This file
+├── LICENSE            # License file
+├── out                # Compiled output files
