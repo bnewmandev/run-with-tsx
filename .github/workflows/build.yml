@@ -53,6 +53,6 @@ jobs:
                   asset_content_type: application/octet-stream
 
             - name: Publish to Visual Studio Marketplace
-              run: vsce publish
+              run: npx vsce publish
               env:
                   VSCE_PAT: ${{ secrets.VSCE_PAT }}
