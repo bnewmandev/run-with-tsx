@@ -34,10 +34,6 @@
 - **Node.js** (>= 14.x): Ensure you have Node.js installed.
 - **tsx**: If `tsx` is not installed globally, the extension will use `npx tsx`.
 
-## Known Issues
-
-- Currently, the extension only supports `.ts` files. Adding support for other file types (e.g., `.tsx`) may be considered in future updates.
-
 ## Release Notes
 
 ### 1.0.0
