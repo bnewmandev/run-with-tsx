@@ -13,6 +13,18 @@ jobs:
             - name: Checkout repository
               uses: actions/checkout@v2
 
+            - name: Get tag name from package.json
+              id: get_tag_name
+              run: echo "TAG_NAME=$(jq -r .version package.json)" >> $GITHUB_ENV
+
+            - name: Check if tag exists
+              id: check_tag_exists
+              run: |
+                  if git rev-parse "v${{ env.TAG_NAME }}" >/dev/null 2>&1; then
+                    echo "Tag v${{ env.TAG_NAME }} already exists."
+                    exit 0
+                  fi
+
             - name: Set up Node.js
               uses: actions/setup-node@v2
               with:
@@ -26,10 +38,6 @@ jobs:
 
             - name: Package extension
               run: yarn package
-
-            - name: Get tag name from package.json
-              id: get_tag_name
-              run: echo "TAG_NAME=$(jq -r .version package.json)" >> $GITHUB_ENV
 
             - name: Create new GitHub release
               id: create_release
