@@ -25,14 +25,11 @@
 ## Usage
 
 1. Right-click on a ts file in the Explorer or Editor and select **Run with tsx**.
-2. The command will:
-   - Open an integrated terminal (or reuse an existing one named `Run tsx`).
-   - Execute `npx tsx <file-path>`.
+2. The command will execute `npx tsx <file-path>`.
 
 ## Requirements
 
 - **Node.js** (>= 14.x): Ensure you have Node.js installed.
-- **tsx**: If `tsx` is not installed globally, the extension will use `npx tsx`.
 
 ## Release Notes
 
