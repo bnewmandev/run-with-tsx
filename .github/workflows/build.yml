@@ -41,9 +41,8 @@ jobs:
               id: get_tag_name
               run: echo "TAG_NAME=$(jq -r .version package.json)" >> $GITHUB_ENV
 
-            - name: Commit version bump
+            - name: Push version bump
               run: |
-                  git commit -am "Bump version to v${{ env.TAG_NAME }}"
                   git push
 
             - name: Build extension
