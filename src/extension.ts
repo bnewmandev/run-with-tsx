@@ -18,7 +18,7 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 
 		terminal.show();
-		terminal.sendText(`npx tsx "${fileUri.fsPath}`);
+		terminal.sendText(`npx tsx "${fileUri.fsPath}"`);
 	});
 
 	context.subscriptions.push(runTsxCommand);
