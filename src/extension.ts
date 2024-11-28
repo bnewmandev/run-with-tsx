@@ -19,7 +19,9 @@ export function activate(context: vscode.ExtensionContext) {
 
 		terminal.show();
 
-		terminal.sendText(`npx tsx "${fileUri.fsPath}"`);
+		const checkGlobalTsx = `tsx --version`;
+		terminal.sendText(checkGlobalTsx, true);
+		terminal.sendText(`if [ $? -eq 0 ]; then tsx "${fileUri.fsPath}"; else npx tsx "${fileUri.fsPath}"; fi`);
 	});
 
 	context.subscriptions.push(runTsxCommand);

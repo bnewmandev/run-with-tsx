@@ -13,20 +13,19 @@
 ### From VS Code Marketplace
 
 1. Open the Extensions view in Visual Studio Code (`Ctrl+Shift+X` or `Cmd+Shift+X` on macOS).
-2. Search for **Run TSX Extension**.
+2. Search for **Run with tsx**.
 3. Click **Install**.
 
 ### From `.vsix` File
 
-1. Download the `.vsix` file from the [Releases](#).
+1. Download the `.vsix` file from the [Releases](https://github.com/bnewmandev/projectp/releases).
 2. In Visual Studio Code, click the `...` menu in the Extensions view and select **Install from VSIX...**.
 3. Choose the downloaded `.vsix` file.
 
 ## Usage
 
-1. Open a TypeScript file (`.ts`) in Visual Studio Code.
-2. Right-click on the file in the Explorer or Editor and select **Run with tsx**.
-3. The command will:
+1. Right-click on a ts file in the Explorer or Editor and select **Run with tsx**.
+2. The command will:
    - Open an integrated terminal (or reuse an existing one named `Run tsx`).
    - Execute `npx tsx <file-path>`.
 

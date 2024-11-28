@@ -2,7 +2,7 @@ import * as assert from "assert";
 import * as vscode from "vscode";
 import * as sinon from "sinon";
 
-const extensionId = "bndev.run-with-tsx";
+const extensionId = "bensndev.run-with-tsx";
 
 suite("Extension Test Suite", () => {
 	vscode.window.showInformationMessage("Start all tests.");
