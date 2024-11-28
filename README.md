@@ -58,19 +58,12 @@ Contributions, issues, and feature requests are welcome! Feel free to check out 
 4. Push to the branch (`git push origin feature/AmazingFeature`).
 5. Open a pull request.
 
+## GitHub Actions Secrets
+
+To enable the GitHub Actions workflow for releasing the extension, you need to set up the following secrets in your repository settings:
+
+- `VSCE_PAT`: Personal Access Token for publishing to the Visual Studio Marketplace. You can generate it from [here](https://code.visualstudio.com/api/working-with-extensions/publishing-extension#get-a-personal-access-token).
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-### Example Directory Structure
-
-```plaintext
-├── src
-│   ├── extension.ts   # Main extension code
-│   └── test           # Test files
-├── package.json       # Extension manifest
-├── README.md          # This file
-├── LICENSE            # License file
-├── out                # Compiled output files
