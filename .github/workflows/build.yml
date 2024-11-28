@@ -1,8 +1,10 @@
 name: Build and Release
 
 on:
-    release:
-        types: [published]
+    push:
+        branches:
+            - main
+
 jobs:
     build:
         runs-on: ubuntu-latest
@@ -25,13 +27,28 @@ jobs:
             - name: Package extension
               run: yarn package
 
+            - name: Get tag name from package.json
+              id: get_tag_name
+              run: echo "TAG_NAME=$(jq -r .version package.json)" >> $GITHUB_ENV
+
+            - name: Create new GitHub release
+              id: create_release
+              uses: comnoco/create-release-action@v2.0.5
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              with:
+                  tag_name: v${{ env.TAG_NAME }}
+                  release_name: Release v${{ env.TAG_NAME }}
+                  draft: false
+                  prerelease: false
+
             - name: Upload VSIX to GitHub Release
               uses: actions/upload-release-asset@v1
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
-                  upload_url: ${{ github.event.release.upload_url }}
-                  asset_path: ./run-with-tsx-*.vsix
+                  upload_url: ${{ steps.create_release.outputs.upload_url }}
+                  asset_path: ./run-with-tsx-${{ env.TAG_NAME }}.vsix
                   asset_name: run-with-tsx.vsix
                   asset_content_type: application/octet-stream
 
