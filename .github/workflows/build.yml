@@ -1,9 +1,17 @@
 name: Build and Release
 
 on:
-    push:
-        branches:
-            - main
+    workflow_dispatch:
+        inputs:
+            version_type:
+                description: "Version type (major, minor, patch)"
+                required: true
+                default: "patch"
+                type: choice
+                options:
+                    - major
+                    - minor
+                    - patch
 
 jobs:
     build:
@@ -13,18 +21,6 @@ jobs:
             - name: Checkout repository
               uses: actions/checkout@v2
 
-            - name: Get tag name from package.json
-              id: get_tag_name
-              run: echo "TAG_NAME=$(jq -r .version package.json)" >> $GITHUB_ENV
-
-            - name: Check if tag exists
-              id: check_tag_exists
-              run: |
-                  if git rev-parse "v${{ env.TAG_NAME }}" >/dev/null 2>&1; then
-                    echo "Tag v${{ env.TAG_NAME }} already exists."
-                    exit 0
-                  fi
-
             - name: Set up Node.js
               uses: actions/setup-node@v2
               with:
@@ -32,6 +28,20 @@ jobs:
 
             - name: Install dependencies
               run: yarn install
+
+            - name: Bump version
+              run: yarn version --${{ github.event.inputs.version_type }}
+
+            - name: Get tag name from package.json
+              id: get_tag_name
+              run: echo "TAG_NAME=$(jq -r .version package.json)" >> $GITHUB_ENV
+
+            - name: Commit version bump
+              run: |
+                  git config --global user.name 'github-actions[bot]'
+                  git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+                  git commit -am "Bump version to v${{ env.TAG_NAME }}"
+                  git push
 
             - name: Build extension
               run: yarn build
