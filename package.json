@@ -5,7 +5,7 @@
   "repository": "https://github.com/bnewmandev/run-with-tsx",
   "license": "MIT",
   "publisher": "bensndev",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "engines": {
     "vscode": "^1.95.0"
   },
